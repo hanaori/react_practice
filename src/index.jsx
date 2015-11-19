@@ -1,17 +1,26 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import _ from "lodash"
 
-var count = 1;
-function countUp() {
-  ReactDOM.render(<Practice count={count}></Practice>, document.getElementById("kaori"))
-  count++;
+var todoArray = ["list1", "list2"];
+function addTodoList() {
+  ReactDOM.render(<Practice todoArray={todoArray}></Practice>, document.getElementById("kaori"))
 }
 
-setInterval(countUp, 1000)
+setInterval(addTodoList, 1000)
 
 
 class Practice extends React.Component {
   render() {
-    return (<span>{this.props.count}</span>)
+      var todos = _.map(this.props.todoArray, (todo, index)=>{
+      return (<PracticeTodo todo={todoArray[index]} key={index}></PracticeTodo>)
+    })
+    return (<ul>{todos}</ul>)
+  }
+}
+
+class PracticeTodo extends React.Component {
+  render() {
+    return (<li>{this.props.todo}</li>)
   }
 }
