@@ -15,7 +15,15 @@ class Practice extends React.Component {
       var todos = _.map(this.props.todoArray, (todo, index)=>{
       return (<PracticeTodo todo={todoArray[index]} key={index}></PracticeTodo>)
     })
-    return (<ul>{todos}</ul>)
+    return (
+      <div>
+        <input type="text" ref="input"></input><a onClick={this.addTodo.bind(this)}>button</a>
+        <ul>{todos}</ul>
+      </div>
+    )
+  }
+  addTodo() {
+    this.props.todoArray.push(this.refs.input.value)
   }
 }
 

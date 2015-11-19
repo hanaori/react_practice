@@ -91,10 +91,25 @@
 	        return _react2.default.createElement(PracticeTodo, { todo: todoArray[index], key: index });
 	      });
 	      return _react2.default.createElement(
-	        "ul",
+	        "div",
 	        null,
-	        todos
+	        _react2.default.createElement("input", { type: "text", ref: "input" }),
+	        _react2.default.createElement(
+	          "a",
+	          { onClick: this.addTodo.bind(this) },
+	          "button"
+	        ),
+	        _react2.default.createElement(
+	          "ul",
+	          null,
+	          todos
+	        )
 	      );
+	    }
+	  }, {
+	    key: "addTodo",
+	    value: function addTodo() {
+	      this.props.todoArray.push(this.refs.input.value);
 	    }
 	  }]);
 
